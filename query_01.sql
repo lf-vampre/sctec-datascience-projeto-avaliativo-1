@@ -1,0 +1,16 @@
+SELECT
+    E.EMPLOYEE_ID AS id,
+    E.HIRE_DATE AS data_contratacao,
+    E.SALARY AS salario,
+    E.COMMISSION_PCT AS comissao,
+    D.DEPARTMENT_NAME AS departamento,
+    J.JOB_TITLE AS cargo,
+    J.MIN_SALARY AS cargo_salario_min,
+    J.MAX_SALARY AS cargo_salario_max
+FROM HR.EMPLOYEES E
+LEFT JOIN HR.DEPARTMENTS D
+    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+LEFT JOIN HR.JOBS J
+    ON E.JOB_ID = J.JOB_ID
+WHERE J.JOB_TITLE IS NOT NULL     
+ORDER BY E.EMPLOYEE_ID;

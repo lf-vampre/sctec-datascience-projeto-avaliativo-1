@@ -1,0 +1,108 @@
+"ID","DATA_CONTRATACAO","SALARIO","COMISSAO","DEPARTAMENTO","CARGO","CARGO_SALARIO_MIN","CARGO_SALARIO_MAX"
+100,"2013-06-17T00:00:00Z",24000,,"Executive","President",20080,40000
+101,"2015-09-21T00:00:00Z",17000,,"Executive","Administration Vice President",15000,30000
+102,"2011-01-13T00:00:00Z",17000,,"Executive","Administration Vice President",15000,30000
+103,"2016-01-03T00:00:00Z",9000,,"IT","Programmer",4000,10000
+104,"2017-05-21T00:00:00Z",6000,,"IT","Programmer",4000,10000
+105,"2015-06-25T00:00:00Z",4800,,"IT","Programmer",4000,10000
+106,"2016-02-05T00:00:00Z",4800,,"IT","Programmer",4000,10000
+107,"2017-02-07T00:00:00Z",4200,,"IT","Programmer",4000,10000
+108,"2012-08-17T00:00:00Z",12008,,"Finance","Finance Manager",8200,16000
+109,"2012-08-16T00:00:00Z",9000,,"Finance","Accountant",4200,9000
+110,"2015-09-28T00:00:00Z",8200,,"Finance","Accountant",4200,9000
+111,"2015-09-30T00:00:00Z",7700,,"Finance","Accountant",4200,9000
+112,"2016-03-07T00:00:00Z",7800,,"Finance","Accountant",4200,9000
+113,"2017-12-07T00:00:00Z",6900,,"Finance","Accountant",4200,9000
+114,"2012-12-07T00:00:00Z",11000,,"Purchasing","Purchasing Manager",8000,15000
+115,"2013-05-18T00:00:00Z",3100,,"Purchasing","Purchasing Clerk",2500,5500
+116,"2015-12-24T00:00:00Z",2900,,"Purchasing","Purchasing Clerk",2500,5500
+117,"2015-07-24T00:00:00Z",2800,,"Purchasing","Purchasing Clerk",2500,5500
+118,"2016-11-15T00:00:00Z",2600,,"Purchasing","Purchasing Clerk",2500,5500
+119,"2017-08-10T00:00:00Z",2500,,"Purchasing","Purchasing Clerk",2500,5500
+120,"2014-07-18T00:00:00Z",8000,,"Shipping","Stock Manager",5500,8500
+121,"2015-04-10T00:00:00Z",8200,,"Shipping","Stock Manager",5500,8500
+122,"2013-05-01T00:00:00Z",7900,,"Shipping","Stock Manager",5500,8500
+123,"2015-10-10T00:00:00Z",6500,,"Shipping","Stock Manager",5500,8500
+124,"2017-11-16T00:00:00Z",5800,,"Shipping","Stock Manager",5500,8500
+125,"2015-07-16T00:00:00Z",3200,,"Shipping","Stock Clerk",2008,5000
+126,"2016-09-28T00:00:00Z",2700,,"Shipping","Stock Clerk",2008,5000
+127,"2017-01-14T00:00:00Z",2400,,"Shipping","Stock Clerk",2008,5000
+128,"2018-03-08T00:00:00Z",2200,,"Shipping","Stock Clerk",2008,5000
+129,"2015-08-20T00:00:00Z",3300,,"Shipping","Stock Clerk",2008,5000
+130,"2015-10-30T00:00:00Z",2800,,"Shipping","Stock Clerk",2008,5000
+131,"2015-02-16T00:00:00Z",2500,,"Shipping","Stock Clerk",2008,5000
+132,"2017-04-10T00:00:00Z",2100,,"Shipping","Stock Clerk",2008,5000
+133,"2014-06-14T00:00:00Z",3300,,"Shipping","Stock Clerk",2008,5000
+134,"2016-08-26T00:00:00Z",2900,,"Shipping","Stock Clerk",2008,5000
+135,"2017-12-12T00:00:00Z",2400,,"Shipping","Stock Clerk",2008,5000
+136,"2018-02-06T00:00:00Z",2200,,"Shipping","Stock Clerk",2008,5000
+137,"2013-07-14T00:00:00Z",3600,,"Shipping","Stock Clerk",2008,5000
+138,"2015-10-26T00:00:00Z",3200,,"Shipping","Stock Clerk",2008,5000
+139,"2016-02-12T00:00:00Z",2700,,"Shipping","Stock Clerk",2008,5000
+140,"2016-04-06T00:00:00Z",2500,,"Shipping","Stock Clerk",2008,5000
+141,"2013-10-17T00:00:00Z",3500,,"Shipping","Stock Clerk",2008,5000
+142,"2015-01-29T00:00:00Z",3100,,"Shipping","Stock Clerk",2008,5000
+143,"2016-03-15T00:00:00Z",2600,,"Shipping","Stock Clerk",2008,5000
+144,"2016-07-09T00:00:00Z",2500,,"Shipping","Stock Clerk",2008,5000
+145,"2014-10-01T00:00:00Z",14000,0.4,"Sales","Sales Manager",10000,20080
+146,"2015-01-05T00:00:00Z",13500,0.3,"Sales","Sales Manager",10000,20080
+147,"2015-03-10T00:00:00Z",12000,0.3,"Sales","Sales Manager",10000,20080
+148,"2017-10-15T00:00:00Z",11000,0.3,"Sales","Sales Manager",10000,20080
+149,"2018-01-29T00:00:00Z",10500,0.2,"Sales","Sales Manager",10000,20080
+150,"2015-01-30T00:00:00Z",10000,0.3,"Sales","Sales Representative",6000,12008
+151,"2015-03-24T00:00:00Z",9500,0.25,"Sales","Sales Representative",6000,12008
+152,"2015-08-20T00:00:00Z",9000,0.25,"Sales","Sales Representative",6000,12008
+153,"2016-03-30T00:00:00Z",8000,0.2,"Sales","Sales Representative",6000,12008
+154,"2016-12-09T00:00:00Z",7500,0.2,"Sales","Sales Representative",6000,12008
+155,"2017-11-23T00:00:00Z",7000,0.15,"Sales","Sales Representative",6000,12008
+156,"2014-01-30T00:00:00Z",10000,0.35,"Sales","Sales Representative",6000,12008
+157,"2014-03-04T00:00:00Z",9500,0.35,"Sales","Sales Representative",6000,12008
+158,"2014-08-01T00:00:00Z",9000,0.35,"Sales","Sales Representative",6000,12008
+159,"2015-03-10T00:00:00Z",8000,0.3,"Sales","Sales Representative",6000,12008
+160,"2015-12-15T00:00:00Z",7500,0.3,"Sales","Sales Representative",6000,12008
+161,"2016-11-03T00:00:00Z",7000,0.25,"Sales","Sales Representative",6000,12008
+162,"2015-11-11T00:00:00Z",10500,0.25,"Sales","Sales Representative",6000,12008
+163,"2017-03-19T00:00:00Z",9500,0.15,"Sales","Sales Representative",6000,12008
+164,"2018-01-24T00:00:00Z",7200,0.1,"Sales","Sales Representative",6000,12008
+165,"2018-02-23T00:00:00Z",6800,0.1,"Sales","Sales Representative",6000,12008
+166,"2018-03-24T00:00:00Z",6400,0.1,"Sales","Sales Representative",6000,12008
+167,"2018-04-21T00:00:00Z",6200,0.1,"Sales","Sales Representative",6000,12008
+168,"2015-03-11T00:00:00Z",11500,0.25,"Sales","Sales Representative",6000,12008
+169,"2016-03-23T00:00:00Z",10000,0.2,"Sales","Sales Representative",6000,12008
+170,"2016-01-24T00:00:00Z",9600,0.2,"Sales","Sales Representative",6000,12008
+171,"2017-02-23T00:00:00Z",7400,0.15,"Sales","Sales Representative",6000,12008
+172,"2017-03-24T00:00:00Z",7300,0.15,"Sales","Sales Representative",6000,12008
+173,"2018-04-21T00:00:00Z",6100,0.1,"Sales","Sales Representative",6000,12008
+174,"2014-05-11T00:00:00Z",11000,0.3,"Sales","Sales Representative",6000,12008
+175,"2015-03-19T00:00:00Z",8800,0.25,"Sales","Sales Representative",6000,12008
+176,"2016-03-24T00:00:00Z",8600,0.2,"Sales","Sales Representative",6000,12008
+177,"2016-04-23T00:00:00Z",8400,0.2,"Sales","Sales Representative",6000,12008
+178,"2017-05-24T00:00:00Z",7000,0.15,,"Sales Representative",6000,12008
+179,"2018-01-04T00:00:00Z",6200,0.1,"Sales","Sales Representative",6000,12008
+180,"2016-01-24T00:00:00Z",3200,,"Shipping","Shipping Clerk",2500,5500
+181,"2016-02-23T00:00:00Z",3100,,"Shipping","Shipping Clerk",2500,5500
+182,"2017-06-21T00:00:00Z",2500,,"Shipping","Shipping Clerk",2500,5500
+183,"2018-02-03T00:00:00Z",2800,,"Shipping","Shipping Clerk",2500,5500
+184,"2014-01-27T00:00:00Z",4200,,"Shipping","Shipping Clerk",2500,5500
+185,"2015-02-20T00:00:00Z",4100,,"Shipping","Shipping Clerk",2500,5500
+186,"2016-06-24T00:00:00Z",3400,,"Shipping","Shipping Clerk",2500,5500
+187,"2017-02-07T00:00:00Z",3000,,"Shipping","Shipping Clerk",2500,5500
+188,"2015-06-14T00:00:00Z",3800,,"Shipping","Shipping Clerk",2500,5500
+189,"2015-08-13T00:00:00Z",3600,,"Shipping","Shipping Clerk",2500,5500
+190,"2016-07-11T00:00:00Z",2900,,"Shipping","Shipping Clerk",2500,5500
+191,"2017-12-19T00:00:00Z",2500,,"Shipping","Shipping Clerk",2500,5500
+192,"2014-02-04T00:00:00Z",4000,,"Shipping","Shipping Clerk",2500,5500
+193,"2015-03-03T00:00:00Z",3900,,"Shipping","Shipping Clerk",2500,5500
+194,"2016-07-01T00:00:00Z",3200,,"Shipping","Shipping Clerk",2500,5500
+195,"2017-03-17T00:00:00Z",2800,,"Shipping","Shipping Clerk",2500,5500
+196,"2016-04-24T00:00:00Z",3100,,"Shipping","Shipping Clerk",2500,5500
+197,"2016-05-23T00:00:00Z",3000,,"Shipping","Shipping Clerk",2500,5500
+198,"2017-06-21T00:00:00Z",2600,,"Shipping","Shipping Clerk",2500,5500
+199,"2018-01-13T00:00:00Z",2600,,"Shipping","Shipping Clerk",2500,5500
+200,"2013-09-17T00:00:00Z",4400,,"Administration","Administration Assistant",3000,6000
+201,"2014-02-17T00:00:00Z",13000,,"Marketing","Marketing Manager",9000,15000
+202,"2015-08-17T00:00:00Z",6000,,"Marketing","Marketing Representative",4000,9000
+203,"2012-06-07T00:00:00Z",6500,,"Human Resources","Human Resources Representative",4000,9000
+204,"2012-06-07T00:00:00Z",10000,,"Public Relations","Public Relations Representative",4500,10500
+205,"2012-06-07T00:00:00Z",12008,,"Accounting","Accounting Manager",8200,16000
+206,"2012-06-07T00:00:00Z",8300,,"Accounting","Public Accountant",4200,9000

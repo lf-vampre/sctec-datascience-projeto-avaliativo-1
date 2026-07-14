@@ -34,9 +34,9 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-1. - [ ] Código .sql (query_01.sql e query_02.sql) das duas consultas usadas no FreeSQL
+1. - [x] Código .sql (query_01.sql e query_02.sql) das duas consultas usadas no FreeSQL
 
-2. - [ ] Arquivos .csv (query_01.csv e query_02.csv) com os dados extratídos do FreeSQL
+2. - [x] Arquivos .csv (query_01.csv e query_02.csv) com os dados extratídos do FreeSQL
 
 3. - [ ] Arquivo .ipynb (projeto_aed_rh.ipynb) em Python (Jupyter Notebook) estruturado com as análises.
 
@@ -57,17 +57,17 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-- [ ] RF01: Conectar-se ao banco de dados FreeSQL (esquema HR)
+- [x] RF01: Conectar-se ao banco de dados FreeSQL (esquema HR)
 
-- [ ] RF02: Buscar dados das tabelas EMPLOYEES, DEPARTMENTS, JOBS, LOCATIONS, COUNTRIES e REGIONS
+- [x] RF02: Buscar dados das tabelas EMPLOYEES, DEPARTMENTS, JOBS, LOCATIONS, COUNTRIES e REGIONS
 
-- [ ] RF03: Desenvolver duas consultas SQL, utilizano pelo menos dois LEFT JOIN em cada consulta:
+- [x] RF03: Desenvolver duas consultas SQL, utilizano pelo menos dois LEFT JOIN em cada consulta:
 
     ● Query 1: Salários por departamento e cargo;
 
     ● Query 2: Funcionários por região, incluindo informações de localização;
 
-- [ ] RF04: Aplicar um filtro utilizando um comando WHERE simples, por exemplo:
+- [x] RF04: Aplicar um filtro utilizando um comando WHERE simples, por exemplo:
 
     ● WHERE SALARY > …
 
@@ -75,7 +75,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
     ● WHERE REGION_NAME IS NOT NULL
 
-- [ ] RF05: Exportar o resultado de cada consulta para arquivos CSV separados:
+- [x] RF05: Exportar o resultado de cada consulta para arquivos CSV separados:
 
     ● query_01.csv
 
@@ -105,7 +105,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-| **HR.EMPLOYEES** |
+| Tabela: **HR.EMPLOYEES** |
 | :--- |
 | |
 | ✅ EMPLOYEE_ID |
@@ -122,7 +122,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-| **HR.DEPARTMENTS** |
+| Tabela: **HR.DEPARTMENTS** |
 | :--- |
 | |
 | DEPARTMENT_ID |
@@ -132,7 +132,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-| **HR.JOBS** |
+| Tabela: **HR.JOBS** |
 | :--- |
 | |
 | JOB_ID |
@@ -142,32 +142,32 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-| **HR.LOCATIONS** |
+| Tabela: **HR.LOCATIONS** |
 | :--- |
 | |
 | LOCATION_ID |
 | STREET_ADDRESS |
 | POSTAL_CODE |
-| CITY |
-| STATE_PROVINCE |
+| ✅ CITY |
+| ✅ STATE_PROVINCE |
 | COUNTRY_ID |
 
 <br>
 
-| **HR.REGIONS** |
-| :--- |
-| |
-| REGION_ID |
-| REGION_NAME |
-
-<br>
-
-| **HR.COUNTRIES** |
+| Tabela: **HR.COUNTRIES** |
 | :--- |
 | |
 | COUNTRY_ID |
-| COUNTRY_NAME |
+| ✅ COUNTRY_NAME |
 | REGION_ID |
+
+<br>
+
+| Tabela: **HR.REGIONS** |
+| :--- |
+| |
+| REGION_ID |
+| ✅ REGION_NAME |
 
 <br>
 
@@ -227,18 +227,75 @@ HAVING
 
 <br>
 
-Query 1 — Salário por Departamento e Cargo:
+> Com objetivo de entender melhor a distribuição dos salários, a relação entre cargos e departamentos e os padrões de remuneração por região, foram feitas duas consultas SQL e exportados os resultados em arquivos .csv para AED no Python.
 
-● Objetivo: analisar a distribuição de salários por departamento e cargo.
+<br>
 
-● Relacionamento sugerido: EMPLOYEES com LEFT JOIN em DEPARTMENTS e JOBS.
+**OBSERVAÇÕES**: 
 
-Query 2 — Funcionários por Região (com localização)
+Nas consultas já foram renomeadas as colunas para facilitar o entendimento.
 
-● Objetivo: analisar salários e distribuição geográfica (Cidade, Estado ou País).
+Foram utilizados "LEFT JOIN" para preservar a integridade da tabela fato "EMPLOYEES", pois garante que todos os registros estarão listados, mesmo aqueles que não tenham correspondência nas outras tabelas (dimensão).
 
-● Relacionamento sugerido: EMPLOYEES com LEFT JOIN em DEPARTMENTS, LOCATIONS, COUNTRIES e REGIONS.
+<br>
 
+**EXECUÇÃO DO SQL**:
+
+A primeira query visa responder a relação de salários por departamento e cargos, para isso foram selecionadas as colunas id, data_contratacao, salario e comissao da tabela Employees, a coluna departamento da tabela Departments e as colunas cargo, cargo_salario_min e cargo_salario_max da tabela Jobs.
+
+Como a análise posterior irá focar no cargo, foi verificado que todas as linhas possuiam o registro na coluna JOB_TITLE. No entanto, a cláusula "_WHERE J.JOB_TITLE IS NOT NULL_" foi mantida para tornar a consulta mais robusta e defensiva, garantindo que dados incompletos não distorçam os resultados da agregação.
+
+
+```sql
+SELECT
+    E.EMPLOYEE_ID AS id,
+    E.HIRE_DATE AS data_contratacao,
+    E.SALARY AS salario,
+    E.COMMISSION_PCT AS comissao,
+    D.DEPARTMENT_NAME AS departamento,
+    J.JOB_TITLE AS cargo,
+    J.MIN_SALARY AS cargo_salario_min,
+    J.MAX_SALARY AS cargo_salario_max
+FROM HR.EMPLOYEES E
+LEFT JOIN HR.DEPARTMENTS D
+    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+LEFT JOIN HR.JOBS J
+    ON E.JOB_ID = J.JOB_ID
+WHERE J.JOB_TITLE IS NOT NULL     
+ORDER BY E.EMPLOYEE_ID;
+```
+
+<br>
+
+A segunda query visa analisar salários e distribuição geográfica, para isso foram selecionadas as colunas id, data_contratacao, salario e comissao da tabela Employees, a coluna departamento da tabela Departments, as colunas cidade e estado da tabela Locations, a coluna pais da tabela Countries e a coluna regiao da tabela Regions.
+
+Já nessa consulta o filtro "_WHERE E.SALARY IS NOT NULL AND E.SALARY > 0_" garante a qualidade dos dados na análise. Ele exclui registros incompletos (NULL) e valores inválidos como zero ou negativos, evitando distorções nas métricas salariais.
+
+
+```sql
+SELECT
+    E.EMPLOYEE_ID AS id,
+    E.HIRE_DATE AS data_contratacao,
+    E.SALARY AS salario,
+    E.COMMISSION_PCT AS comissao,
+    D.DEPARTMENT_NAME AS departamento,
+    L.CITY AS cidade,
+    L.STATE_PROVINCE AS estado,
+    C.COUNTRY_NAME AS pais,
+    R.REGION_NAME AS regiao
+FROM HR.EMPLOYEES E
+LEFT JOIN HR.DEPARTMENTS D
+    ON E.DEPARTMENT_ID = D.DEPARTMENT_ID
+LEFT JOIN HR.LOCATIONS L
+    ON D.LOCATION_ID = L.LOCATION_ID
+LEFT JOIN HR.COUNTRIES C
+    ON L.COUNTRY_ID = C.COUNTRY_ID
+LEFT JOIN HR.REGIONS R
+    ON C.REGION_ID = R.REGION_ID
+WHERE  E.SALARY IS NOT NULL
+    AND E.SALARY > 0
+ORDER BY R.REGION_NAME, C.COUNTRY_NAME, L.CITY;
+```
 
 <br>
 
