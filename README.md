@@ -1,7 +1,10 @@
 ![Logos](./images/logos.png)
+
+<br>
 <br>
 
 ## 💻 Curso Datascience - Visualização de Dados e Business Intelligence. 
+
 Projeto Avaliativo Final - Módulo 1 - Semana 13
 
 Aluno: Luiz Felipe F V Vieira
@@ -10,7 +13,7 @@ Aluno: Luiz Felipe F V Vieira
 <br>
 
 ## 🔍 AED (Análise Exploratória de Dados): "Base Recursos Humanos" 
-Utilizando as tabelas 'HR' (Human Resources) do banco Oracle FreeSQL que contém registros sobre funcionários, cargos, departamentos, salários e distribuição geográfica.
+Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL que contém registros sobre funcionários, cargos, departamentos, salários e distribuição geográfica.
 (https://freesql.com/)
 
 <br>
@@ -97,6 +100,133 @@ Utilizando as tabelas 'HR' (Human Resources) do banco Oracle FreeSQL que contém
 ### 🧾 Sobre as Tabelas Usadas
 
 <br>
+
+> As seguintes tabelas do banco HR foram utilizadas no projeto. Os campos marcados foram selecionados para exportação e posterior AED com Python. A tabela principal (tabela fato) é a HR.EMPLOYEES.
+
+<br>
+
+| **HR.EMPLOYEES** |
+| :--- |
+| |
+| ✅ EMPLOYEE_ID |
+| FIRST_NAME |
+| LAST_NAME |
+| EMAIL |
+| PHONE_NUMBER |
+| ✅ HIRE_DATE |
+| JOB_ID |
+| ✅ SALARY |
+| ✅ COMMISSION_PCT |
+| MANAGER_ID |
+| DEPARTMENT_ID |
+
+<br>
+
+| **HR.DEPARTMENTS** |
+| :--- |
+| |
+| DEPARTMENT_ID |
+| ✅ DEPARTMENT_NAME |
+| MANAGER_ID |
+| LOCATION_ID |
+
+<br>
+
+| **HR.JOBS** |
+| :--- |
+| |
+| JOB_ID |
+| ✅ JOB_TITLE |
+| ✅ MIN_SALARY |
+| ✅ MAX_SALARY |
+
+<br>
+
+| **HR.LOCATIONS** |
+| :--- |
+| |
+| LOCATION_ID |
+| STREET_ADDRESS |
+| POSTAL_CODE |
+| CITY |
+| STATE_PROVINCE |
+| COUNTRY_ID |
+
+<br>
+
+| **HR.REGIONS** |
+| :--- |
+| |
+| REGION_ID |
+| REGION_NAME |
+
+<br>
+
+| **HR.COUNTRIES** |
+| :--- |
+| |
+| COUNTRY_ID |
+| COUNTRY_NAME |
+| REGION_ID |
+
+<br>
+
+> Primeiramente foi feita a verificação se existiam funcionários repetidos. Como a coluna EMPLOYEE_ID não tem linhas repetidas, a primeira verificação foi feita pelas colunas FIRST_NAME + LAST_NAME e depois foi verificado se existiam linhas repetidas na coluna EMAIL. 
+
+<br>
+
+**OBJETIVO DESTAS CONSULTAS**: Como a proposta é fazer somente análises abrangentes por departamento, cargo e distribuição geográfica, iremos exportar os dados de forma anônima (removendo os dados sensíveis como nome, sobrenome, email e telefone). Então a consulta de duplicatas se faz necessária ainda no banco de dados, pois após a remoção destas colunas, podem haver valores duplicados para funcionários distintos.
+
+<br>
+
+**RESULTADO**: Para ambas verificações, não foram encontrados valores duplicados.
+
+<br>
+
+**EXECUÇÃO DO SQL**:
+
+Para a primeira verificação foi utilizado o seguinte código SQL abaixo. Este código seleciona as colunas FIRST_NAME e LAST_NAME e agrupa todas as linhas que têm a mesma combinaçao de nome e sobrenome.
+
+Ao mesmo tempo armazena a quantidade de repetições em uma nova coluna chamada 'qtde' e exibe somente os resultados que possuem a contagem maior que 1 (HAVING COUNT(*) > 1).
+
+```sql
+SELECT 
+    FIRST_NAME, 
+    LAST_NAME, 
+    COUNT(*) as qtde
+FROM 
+    HR.EMPLOYEES
+GROUP BY 
+    FIRST_NAME, 
+    LAST_NAME
+HAVING 
+    COUNT(*) > 1; 
+``` 
+
+<br>
+
+Para a segunda verificação foi utilizada a mesma lógica anterior, porém somente com a coluna EMAIL.
+
+```sql
+SELECT 
+    EMAIL, 
+    COUNT(*) as qtde
+FROM 
+    HR.EMPLOYEES
+GROUP BY 
+    EMAIL
+HAVING 
+    COUNT(*) > 1;   
+```
+
+<br>
+
+---
+
+### 🛢️ Código das consultas SQL
+
+<br>
+
 Query 1 — Salário por Departamento e Cargo:
 
 ● Objetivo: analisar a distribuição de salários por departamento e cargo.
@@ -114,12 +244,6 @@ Query 2 — Funcionários por Região (com localização)
 
 ---
 
-### 🛢️ Código das consultas SQL
-
-<br>
-
----
-
 ### 🐍 Análises Feita em Python (Jupyter Notebook)
 
 <br>
@@ -129,6 +253,7 @@ Query 2 — Funcionários por Região (com localização)
 ### 📊 Visualizações e Resultados
 
 <br>
+
 ---
 
 ### 🚀 Como Executar o Projeto (Instalação)
@@ -146,11 +271,10 @@ Query 2 — Funcionários por Região (com localização)
 <br>
 
 1. **Clone o repositório e acesse a pasta:**
-```bash
 
+```bash
 git clone https://github.com/lf-vampre/sctec-datascience-projeto-avaliativo-1
 cd sctec-datascience-projeto-avaliativo-1
-
 ```
 
 <br>
