@@ -38,7 +38,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 2. - [x] Arquivos .csv (query_01.csv e query_02.csv) com os dados extratídos do FreeSQL
 
-3. - [ ] Arquivo .ipynb (projeto_aed_rh.ipynb) em Python (Jupyter Notebook) estruturado com as análises.
+3. - [x] Arquivo .ipynb (projeto_aed_rh.ipynb) em Python (Jupyter Notebook) estruturado com as análises.
 
 4. - [ ] Arquivo README.md com a documentação completa do projeto.
 
@@ -81,17 +81,19 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
     ● query_02.csv
 
-- [ ] RF06: Importar os arquivos CSV no Python (Jupyter Notebook)
+- [x] RF06: Importar os arquivos CSV no Python (Jupyter Notebook)
 
-- [ ] RF07: Realizar uma Análise Exploratória de Dados (EDA) simples
+- [x] RF07: Realizar o fluxo ETL para investigação e limpeza nos dados.
 
-- [ ] RF08: Calcular medidas estatísticas básicas, como: média, mediana, valor mínimo, valor máximo
+- [ ] RF08: Realizar uma Análise Exploratória de Dados (EDA) simples
 
-- [ ] RF09: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
+- [ ] RF09: Calcular medidas estatísticas básicas, como: média, mediana, valor mínimo, valor máximo
 
-- [ ] RF10: Documentar todo o desenvolvimento do projeto em um arquivo README.md
+- [ ] RF10: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
 
-- [ ] RF11: Publicar o projeto completo no GitHub e enviar o repositório da turma no AVA (incluindo o vídeo)
+- [ ] RF11: Documentar todo o desenvolvimento do projeto em um arquivo README.md
+
+- [ ] RF12: Publicar o projeto completo no GitHub e enviar o repositório da turma no AVA (incluindo o vídeo)
 
 <br>
 
@@ -179,7 +181,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 <br>
 
-**RESULTADO**: Para ambas verificações, não foram encontrados valores duplicados.
+**RESULTADO**: Para ambas verificações, não foram encontrados valores duplicados. As consultas também foram salvas nos arquivos `query_duplicated_email.sql` e `query_duplicated_name.sql`.
 
 <br>
 
@@ -227,15 +229,17 @@ HAVING
 
 <br>
 
-> Com objetivo de entender melhor a distribuição dos salários, a relação entre cargos e departamentos e os padrões de remuneração por região, foram feitas duas consultas SQL e exportados os resultados em arquivos .csv para AED no Python.
+> Com objetivo de entender melhor a distribuição dos salários, a relação entre cargos e departamentos e os padrões de remuneração por região, foram feitas duas consultas SQL e exportados os resultados em arquivos .csv para ETL e AED no Python.
 
 <br>
 
 **OBSERVAÇÕES**: 
 
-Nas consultas já foram renomeadas as colunas para facilitar o entendimento.
+As colunas já foram renomeadas nas consultas para facilitar o entendimento na AED.
 
 Foram utilizados "LEFT JOIN" para preservar a integridade da tabela fato "EMPLOYEES", pois garante que todos os registros estarão listados, mesmo aqueles que não tenham correspondência nas outras tabelas (dimensão).
+
+As consultas foram salvas como `query_01.sql` e `query_02.sql` e os resultados foram salvos como `query_01.csv` e `query_02.csv` respectivamente.
 
 <br>
 
@@ -302,6 +306,62 @@ ORDER BY R.REGION_NAME, C.COUNTRY_NAME, L.CITY;
 ---
 
 ### 🐍 Análises Feita em Python (Jupyter Notebook)
+
+<br>
+
+> Foi criado um Fluxo do Pipeline de Dados com as etapas de ETL (Extract - Transform - Load) e de EDA (Exploratory Data Analysis - AED)
+
+<br>
+
+**1. EXTRACT - Verificação e conhecimento da base**
+
+Nesta etapa foram importadas as bibliotecas necessária para análise (pandas, matplotlib e seaborn) e os arquivos .csv gerados no FreeSQL (query_01.csv e query_02.csv). 
+
+Após foram utilizados os médodos `.head()`, `.tail()`, `.info()`, `.isnull().sum()` e `.nunique()` do pandas para investigação das tabelas, colunas e dados, além da contagem de nulos e contagem de registros únicos em cada coluna.
+
+**2. TRANSFORM - Limpeza dos dados (DUPLICADOS)**
+
+A verificação de linhas duplicadas já foi feita diretamente na tabela fato do banco HR (FreeSQL). Então nessa etapa, apenas para fins didáticos, foram feitas as consultas de total de linhas, linhas únicas e linhas duplicadas para exemplificar o código em Python utilizado para este fim.
+
+**3. TRANSFORM - Correção e tratamento dos dados**
+
+Ainda na transformação dos dados, foi gerada uma cópia de cada DataFrame para iniciar as modificações necessárias. Desta forma preservamos os DataFrames carregados originalmente.
+
+_3.1. Correção de data (str > datetime)_
+
+Foi utilizado o método `to_datetime()` do pandas para transformar a coluna DATA_CONTRATACAO de string para o tipo datetime e futuramente a criação de novas features de data.
+
+_3.2. Conversão e otimização dos tipos de dados_
+
+Para realizar a adequação dos tipos de dados das colunas visando reduzir o consumo de memória e melhorar a eficiência das operações analíticas foram feitas conversão nos tipos de dados.
+
+Colunas categóricas -> Convertidas de str (string) para o tipo category
+
+Colunas numéricas -> Ajustado para tipo mais compacto de int64 para int16 e int32
+
+_3.3. Inconsistência de dados_
+
+Nesta etapa foi verificada a consistência dos dados nas colunas categoricas. Para isso foi utilizado o método `.value_counts(dropna=False)` em cada coluna categorica. Desta forma é possível verificar quais dados estão nessas colunas e quantas vezes aparece cada um. 
+
+O objetivo é verificar algum dado que possa estar incorreto (que não representa aquela categoria) e utilizando o parâmetro `(dropna=False)` também conseguimos contar quantos `NaN` (ou vazios) existem em cada coluna.
+
+_CONCLUSÃO_: 
+
+Na tabela de Cargos e Departamentos foi encontrado um registro com a coluna DEPARTAMENTO sem valor (ID=178). Este mesmo registro possuia a coluna CARGO com o valor 'Sales Representative'. Após investigação na tabela, foi constatado que todos os registros que possuiam o mesmo cargo estavam no Departamento 'Sales'. Portanto, podemos determinar que este funcionário com o referido cargo, também pertence ao mesmo departamento e assim foi atribuído.
+
+Na tabela de Localização foram encontrados 2 registros inconsistêntes. 
+
+O primeiro (ID=203) tinha apenas a coluna ESTADO vazia. Após a verificação do País a qual pertencia e das Cidades que pertenciam ao mesmo País, foi constatado que existiam apenas as Cidades Oxford (com 34 registros) pertencente ao Estado de Oxford e a Cidade de London (com 1 registro) e que estava sem o Estado. Para não haver inconsistência nas análises, foi atribuído o estado de London (mesmo nome da cidade), seguindo o padrão da outra cidade.
+
+Já o segundo registro (ID=178) é o mesmo funcionário que foi encontrada a inconstância na coluna DEPARTAMENTO. Como na exportação dos dados do FreeSQL utilizamos LEFT JOIN e a tabela HR.LOCATIONS tem relação direta com a tabela HR.DEPARTMENTS, todos os dados de localização vieram vazios pela falta do departamento. Como na análise anterior já descobrimos que este registro pertence ao departamento 'Sales', pesquisamos todos os registros do mesmo departamento para descobrir em qual localidade se encontravam. Todos os 34 registros estavam na mesma localidade, então foi concluído que este registro também pertence a mesma localidade e assim foram preenchidos os campos.
+
+_3.4. Engenharia de Features_
+
+Foram criadas 3 novas features (colunas) temporais (DIA, MES, ANO) através da coluna DATA_CONTRATACAO utilizando os métodos `.dt.day`, `dt.month` e `dt.year`. Desta forma é possível fazer análises por período de tempo.
+
+**LOAD - Gerar nova base limpa**
+
+Completando o fluxo de ETL foi gerada uma nova base final como fonte única da verdade. Como as duas tabelas vieram da mesma tabela fato HR.EMPLOYEES, elas foram mescladas e transformadas em uma única base limpa. Toda a AED será feita nessa tabela única. Para garantir a persistência dos dados finais, esta nova tabela foi salva como um novo arquivo `base_final.csv`.
 
 <br>
 
