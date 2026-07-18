@@ -85,9 +85,9 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 - [x] RF07: Realizar o fluxo ETL para investigação e limpeza nos dados.
 
-- [ ] RF08: Realizar uma Análise Exploratória de Dados (EDA) simples
+- [x] RF08: Calcular medidas estatísticas básicas, como: média, mediana, valor mínimo, valor máximo
 
-- [ ] RF09: Calcular medidas estatísticas básicas, como: média, mediana, valor mínimo, valor máximo
+- [ ] RF09: Realizar uma Análise Exploratória de Dados (EDA) simples
 
 - [ ] RF10: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
 
@@ -319,9 +319,13 @@ Nesta etapa foram importadas as bibliotecas necessária para análise (pandas, m
 
 Após foram utilizados os médodos `.head()`, `.tail()`, `.info()`, `.isnull().sum()` e `.nunique()` do pandas para investigação das tabelas, colunas e dados, além da contagem de nulos e contagem de registros únicos em cada coluna.
 
+<br>
+
 **2. TRANSFORM - Limpeza dos dados (DUPLICADOS)**
 
 A verificação de linhas duplicadas já foi feita diretamente na tabela fato do banco HR (FreeSQL). Então nessa etapa, apenas para fins didáticos, foram feitas as consultas de total de linhas, linhas únicas e linhas duplicadas para exemplificar o código em Python utilizado para este fim.
+
+<br>
 
 **3. TRANSFORM - Correção e tratamento dos dados**
 
@@ -335,9 +339,9 @@ _3.2. Conversão e otimização dos tipos de dados_
 
 Para realizar a adequação dos tipos de dados das colunas visando reduzir o consumo de memória e melhorar a eficiência das operações analíticas foram feitas conversão nos tipos de dados.
 
-Colunas categóricas -> Convertidas de str (string) para o tipo category
+- Colunas categóricas -> Convertidas de str (string) para o tipo category
 
-Colunas numéricas -> Ajustado para tipo mais compacto de int64 para int16 e int32
+- Colunas numéricas -> Ajustado para tipo mais compacto de int64 para int16 e int32
 
 _3.3. Inconsistência de dados_
 
@@ -345,7 +349,7 @@ Nesta etapa foi verificada a consistência dos dados nas colunas categoricas. Pa
 
 O objetivo é verificar algum dado que possa estar incorreto (que não representa aquela categoria) e utilizando o parâmetro `(dropna=False)` também conseguimos contar quantos `NaN` (ou vazios) existem em cada coluna.
 
-_CONCLUSÃO_: 
+- _CONCLUSÃO_: 
 
 Na tabela de Cargos e Departamentos foi encontrado um registro com a coluna DEPARTAMENTO sem valor (ID=178). Este mesmo registro possuia a coluna CARGO com o valor 'Sales Representative'. Após investigação na tabela, foi constatado que todos os registros que possuiam o mesmo cargo estavam no Departamento 'Sales'. Portanto, podemos determinar que este funcionário com o referido cargo, também pertence ao mesmo departamento e assim foi atribuído.
 
@@ -359,7 +363,9 @@ _3.4. Engenharia de Features_
 
 Foram criadas 3 novas features (colunas) temporais (DIA, MES, ANO) através da coluna DATA_CONTRATACAO utilizando os métodos `.dt.day`, `dt.month` e `dt.year`. Desta forma é possível fazer análises por período de tempo.
 
-**LOAD - Gerar nova base limpa**
+<br>
+
+**4. LOAD - Gerar nova base limpa**
 
 Completando o fluxo de ETL foi gerada uma nova base final como fonte única da verdade. Como as duas tabelas vieram da mesma tabela fato HR.EMPLOYEES, elas foram mescladas e transformadas em uma única base limpa. Toda a AED será feita nessa tabela única. Para garantir a persistência dos dados finais, esta nova tabela foi salva como um novo arquivo `base_final.csv`.
 
