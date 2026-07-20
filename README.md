@@ -386,7 +386,7 @@ Completando o fluxo de ETL foi gerada uma nova base final como fonte única da v
 
 <br>
 
-**- 5.1 -> Estatísticas para coluna SALÁRIO** (média; mediana; desvio padrão; moda; máximo; mínimo;contagem)
+_**- 5.1 -> Estatísticas para coluna SALÁRIO**_ (média; mediana; desvio padrão; moda; máximo; mínimo;contagem)
 
 Foram utilizados os métodos `.describe()` e `.mode().iloc[0]` para retornar dados estatísticos dos salários, bem como criadas faixas (bins) para medir a distribuição.
 
@@ -412,7 +412,7 @@ Foram utilizados os métodos `.describe()` e `.mode().iloc[0]` para retornar dad
 
 <br>
 
-**- 5.2 -> Salários por departamento e cargo**
+_**- 5.2 -> Salários por departamento e cargo**_
 
 Os dados foram agrupados por departamentos e depois por cargos e calculadas 3 métricas para cada departamento: mínimo, média e máximo.
 
@@ -448,7 +448,7 @@ Os dados foram agrupados por departamentos e depois por cargos e calculadas 3 m�
 
 <br>
 
-**- 5.3 -> Funcionários por região (CIDADE)**
+_**- 5.3 -> Funcionários por região (CIDADE)**_
 
 Os dados foram agrupados por CIDADE e contados a quantidade de funcionários pelo ID.
 
@@ -468,7 +468,7 @@ Os dados foram agrupados por CIDADE e contados a quantidade de funcionários pel
 
 <br>
 
-**- 5.4 -> Salários por região (CIDADE)**
+_**- 5.4 -> Salários por região (CIDADE)**_
 
 Para obserar a distribuição de salários por cidades, foi utilizado o gráfico de bloxpot com eixo x sendo as Cidades e o eixo y sendo o Salários.
 
@@ -493,7 +493,7 @@ Para obserar a distribuição de salários por cidades, foi utilizado o gráfico
 
 <br>
 
-**- 5.5 -> Ano / Mês com maiores contratações**
+_**- 5.5 -> Ano / Mês com maiores contratações**_
 
 Utilizando as novas features criadas, os dados foram agrupados por ANO e MES e calculado o tamanho (quantidade) de índices em cada agrupamento.
 
@@ -510,11 +510,11 @@ Utilizando as novas features criadas, os dados foram agrupados por ANO e MES e c
 
 **GRÁFICO**: 
 
-![grafico_06(./images/06_sazonalidade_contratacao.png)
+![grafico_06](./images/06_sazonalidade_contratacao.png)
 
 <br>
 
-**- 5.6 -> Tempo de casa vs Salário para um mesmo Departamento**
+_**- 5.6 -> Tempo de casa vs Salário para um mesmo Departamento**_
 
 Com a nova feature (TEMPO_CASA) foi utilizado um gráfico de dispersão (scatterplot) para relacionar o salário vs tempo de casa e colorido (hue) pelo departamento. No mesmo gráfico foi utilizado uma linha de tendência (regplot - linha regressão linear), para visualizar a tendência geral entre salários e tempo de casa.
 
@@ -540,7 +540,7 @@ Shipping e Purchasing, ficam concentrados na base do gráfico (abaixo de 5000), 
 
 **GRÁFICO**: 
 
-![grafico_07(./images/07_tempocasa_salario.png)
+![grafico_07](./images/07_tempocasa_salario.png)
 
 <br>
 
