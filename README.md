@@ -87,9 +87,9 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 - [x] RF08: Calcular medidas estatísticas básicas, como: média, mediana, valor mínimo, valor máximo
 
-- [ ] RF09: Realizar uma Análise Exploratória de Dados (EDA) simples
+- [x] RF09: Realizar uma Análise Exploratória de Dados (EDA) simples
 
-- [ ] RF10: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
+- [x] RF10: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
 
 - [ ] RF11: Documentar todo o desenvolvimento do projeto em um arquivo README.md
 
@@ -361,7 +361,7 @@ Já o segundo registro (ID=178) é o mesmo funcionário que foi encontrada a inc
 
 _3.4. Engenharia de Features_
 
-Foram criadas 3 novas features (colunas) temporais (DIA, MES, ANO) através da coluna DATA_CONTRATACAO utilizando os métodos `.dt.day`, `dt.month` e `dt.year`. Desta forma é possível fazer análises por período de tempo.
+Foram criadas 3 novas features (colunas) temporais (DIA, MES, ANO) através da coluna DATA_CONTRATACAO utilizando os métodos `.dt.day`, `dt.month` e `dt.year`. Também foi criada 1 nova feature numérica (TEMPO_CASA) subtraindo a data atual da data de contratação e dividido por 365.25 para o resultado ser em anos. Desta forma é possível fazer análises por período de tempo.
 
 <br>
 
