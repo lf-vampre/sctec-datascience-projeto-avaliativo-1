@@ -40,7 +40,7 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 3. - [x] Arquivo .ipynb (projeto_aed_rh.ipynb) em Python (Jupyter Notebook) estruturado com as análises.
 
-4. - [ ] Arquivo README.md com a documentação completa do projeto.
+4. - [x] Arquivo README.md com a documentação completa do projeto.
 
 5. - [ ] Versionamento com branch e commit no github.
 
@@ -91,9 +91,9 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 - [x] RF10: Criar pelo menos um gráfico, podendo ser: histograma ou boxplot
 
-- [ ] RF11: Documentar todo o desenvolvimento do projeto em um arquivo README.md
+- [x] RF11: Documentar todo o desenvolvimento do projeto em um arquivo README.md
 
-- [ ] RF12: Publicar o projeto completo no GitHub e enviar o repositório da turma no AVA (incluindo o vídeo)
+- [x] RF12: Publicar o projeto completo no GitHub e enviar o repositório da turma no AVA (incluindo o vídeo)
 
 <br>
 
@@ -377,6 +377,174 @@ Completando o fluxo de ETL foi gerada uma nova base final como fonte única da v
 
 <br>
 
+> Para AED foram feitas 6 análises sendo gerados os gráficos e insights sobre cada uma delas
+
+
+<br>
+
+**5. AED - Gerar estatísticas e análises**
+
+<br>
+
+**- 5.1 -> Estatísticas para coluna SALÁRIO** (média; mediana; desvio padrão; moda; máximo; mínimo;contagem)
+
+Foram utilizados os métodos `.describe()` e `.mode().iloc[0]` para retornar dados estatísticos dos salários, bem como criadas faixas (bins) para medir a distribuição.
+
+<br>
+
+**CONCLUSÕES**: 
+
+- Mediana (50% - 6200.00): Indica que 50% dos funcionários recebem até esse valor.
+
+- Média (mean = 6461.83): A média é ligeiramente maior que a mediana o que mostra uma assimetria a direita, onde poucos salários muito altos (como o outlier máx em 24000) puxam a média para cima enquano que a maioria das pessoas (68) estão concentradas na faixa inferior ( < 7500).
+
+- Desvio Padrão (std = 3909.58): O desvio padrão é alto onde confirma a grande dispersão da amostra.
+
+- Mínimo e Máximo: O menor salário é 2100 e o maior 24000 o que evidencia uma faixa salarial ampla.
+
+- Moda: O valor de salário mais frequente é de 2500 e isso corrobora com nossa classe modal (faixa com mais ocorrências) que ficou no bin de 2000 - 7500.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_01](./images/01_estatisticas.png)
+
+<br>
+
+**- 5.2 -> Salários por departamento e cargo**
+
+Os dados foram agrupados por departamentos e depois por cargos e calculadas 3 métricas para cada departamento: mínimo, média e máximo.
+
+<br>
+
+**CONCLUSÕES POR DEPARTAMENTO**: 
+
+- O gráfico foi ordenado pela média salarial de cada departamento. Observa-se que o departamento "Executive" apresenta a maior média salarial, enquanto "Shipping" possui a menor.
+
+- Em alguns departamentos, os salários mínimo e máximo estão relativamente próximos da média, indicando menor dispersão salarial. Já em departamentos como Shipping, Purchasing e Sales, a diferença entre os salários mínimo e máximo é maior, evidenciando maior variabilidade salarial dentro dessas áreas.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_02](./images/02_salarios_depto.png)
+
+<br>
+
+**CONCLUSÕES POR CARGOS**: 
+
+- O gráfico foi ordenado pela média salarial dos cargos. Observa-se que President possui a maior média salarial, seguido por Administration Vice President, enquanto Purchansing Clerk apresenta a menor média salarial.
+
+- Alguns cargos, como President, Accounting Manager, Finance Manager e Marketing Manager, apresentam salários mínimo, médio e máximo praticamente iguais, indicando uma remuneração padronizada para esses cargos ou a existência de apenas 1 funcionário neste cargo.
+
+- Em contrapartida, cargos como Sales Manager, Sales Representative, Programmer e Accountant apresentam maior diferença entre os salários mínimo e máximo, evidenciando maior variabilidade salarial entre os ocupantes desses cargos.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_03](./images/03_salarios_cargo.png)
+
+<br>
+
+**- 5.3 -> Funcionários por região (CIDADE)**
+
+Os dados foram agrupados por CIDADE e contados a quantidade de funcionários pelo ID.
+
+<br>
+
+**CONCLUSÕES**: 
+
+- A maioria dos funcionários estão na localidade de "South San Francisco" (California) com 45 funcionários, seguido por "Oxford" (Oxford) com 35 funcionarios e "Seattle" (Washington) com 18 funcionários.
+
+- Interessante notar que as cidades de "Munich" (Bavaria) e "London" (London) possuem apenas 1 funcionário cada
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_04](./images/04_funcionarios_cidade.png)
+
+<br>
+
+**- 5.4 -> Salários por região (CIDADE)**
+
+Para obserar a distribuição de salários por cidades, foi utilizado o gráfico de bloxpot com eixo x sendo as Cidades e o eixo y sendo o Salários.
+
+
+<br>
+
+**CONCLUSÕES**: 
+
+- Seattle apresenta a maior dispersão salarial, com salários variando aproximadamente entre R$ 2.500 e R$ 24.000.
+
+- Toronto e Oxford possuem medianas salariais relativamente elevadas e menor dispersão que Seattle, sugerindo salários mais concentrados em torno da mediana.
+
+- South San Francisco concentra os menores salários da amostra, embora apresente alguns outliers com remunerações significativamente superiores ao restante dos funcionários da cidade.
+
+- Munich e London como possuem somente 1 funcionário faz com que não haja dispersão salarial.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_05](./images/05_salarios_cidade.png)
+
+<br>
+
+**- 5.5 -> Ano / Mês com maiores contratações**
+
+Utilizando as novas features criadas, os dados foram agrupados por ANO e MES e calculado o tamanho (quantidade) de índices em cada agrupamento.
+
+
+<br>
+
+**CONCLUSÕES**: 
+
+- Observa-se uma tendência de crescimento nas contratações entre 2011 e 2015, ano em que foi registrado o maior número de admissões. A partir de 2016, houve uma redução gradual no número de contratações, embora os valores permaneçam superiores aos observados no início da série.
+
+- Em relação à sazonalidade, março foi o mês com maior número de contratações, enquanto setembro e novembro apresentaram os menores volumes. As contratações ocorreram ao longo de todo o ano, porém com maior concentração no primeiro trimestre, especialmente entre janeiro e março.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_06(./images/06_sazonalidade_contratacao.png)
+
+<br>
+
+**- 5.6 -> Tempo de casa vs Salário para um mesmo Departamento**
+
+Com a nova feature (TEMPO_CASA) foi utilizado um gráfico de dispersão (scatterplot) para relacionar o salário vs tempo de casa e colorido (hue) pelo departamento. No mesmo gráfico foi utilizado uma linha de tendência (regplot - linha regressão linear), para visualizar a tendência geral entre salários e tempo de casa.
+
+<br>
+
+**CONCLUSÕES**: 
+
+- A linha de regressão preta indica uma correlação linear positiva, ou seja, na média da empresa, quanto maior o tempo de casa, maior tende a ser o salário do funcionário.
+
+- Embora a tendência geral seja de alta alguns departamentos tem comportamentos diferentes. 
+
+Exemplos: 
+
+Executive, apresenta os salários mais isolados e elevados do gráficos (outliers acima de 15000) mesmo sem tem o maior tempo de casa. Ainda podemos observar um funcionário com aproximadamente 13 anos de casa ganhando mais que outro com mais de 15 anos.
+
+Sales e Finance, apresentam uma progressão salarial acima da média conforme o tempo passa.
+
+Shipping e Purchasing, ficam concentrados na base do gráfico (abaixo de 5000), mostrando pouca variação salarial relevante com o aumento do tempo de casa.
+
+- Dispersão e variabilidade: A área sombreada (intervalo de confiança) alarga-se nos anos finais (após 13 anos). Issso mostra que, para funcionários muito antigos, o salário se torna menos previsível apenas pelo tempo de casa, dependendo mais de fatores como o departamento em que ele trabalha.
+
+<br>
+
+**GRÁFICO**: 
+
+![grafico_07(./images/07_tempocasa_salario.png)
+
+<br>
+
+
 ---
 
 ### 🚀 Como Executar o Projeto (Instalação)
@@ -443,6 +611,20 @@ pip install -r requirements.txt
 ---
 
 ### 💡 Sugestões de melhoria para futuras versões
+
+<br>
+
+- Para uma versão futura desta AED poderíamos cruzar mais dados gerando novos insights, bem como gerar outros tipos de gráficos. Por exemplo, criar um Heatmap da média salarial por Departamento x Cargo ou um Heatmap de Salários por tempo de casa.
+
+- Poderiam ser respondidas novas perguntas sobre o negócio como por exemplo:
+
+Qual departamento tem o maior número de funcionários?
+
+Qual é o impacto da folha de pagamento por departamento, cargo, ou região? (somando-se os salários)
+
+Existe predominância de determinados cargos em algumas cidades?
+
+- Para uma melhor apresentação, poderia ser criado um Dashboard resumindo os principais indicadores e insights e ainda torná-lo interativo com seleção de opções categóricas ou de tempo.
 
 <br>
 
