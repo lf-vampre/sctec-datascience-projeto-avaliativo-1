@@ -42,9 +42,9 @@ Utilizando as tabelas do banco de dados 'HR' (Human Resources) da Oracle FreeSQL
 
 4. - [x] Arquivo README.md com a documentação completa do projeto.
 
-5. - [ ] Versionamento com branch e commit no github.
+5. - [x] Versionamento com branch e commit no github.
 
-6. - [ ] Vídeo explicativo demonstrando a visualização e utilização dos recursos desenvolvidos (enviar no AVA).
+6. - [x] Vídeo explicativo demonstrando a visualização e utilização dos recursos desenvolvidos (enviar no AVA).
 
 
 <br>
