@@ -645,3 +645,29 @@ Existe predominância de determinados cargos em algumas cidades?
 ### 📜 Histórico de Commits (git log --oneline)
 
 <br>
+
+622b1fe (HEAD -> main, origin/main) Finalização do README.md. Todos RF's concluídos.
+
+abb088e (origin/4-final, 4-final) Atualização README.md e projeto_aed_rh.ipynb . Ajuste  RF11.
+
+d15fdea Atualização README.md. Ajuste  RF11.
+
+adbd67a Atualização README.md, criação arquivos gráfico .png e requirements.txt. RF11 concluído.
+
+ed0a2e5 (origin/3-ipynb-aed, 3-ipynb-aed) Finalizado análise AED com gráficos. RF09 e RF10 completos.
+
+50fafab Iniciado fluxo AED com estatísticas. RF08 completo.
+
+a77e1de (origin/2-ipynb-etl, 2-ipynb-etl) Criado arquivo .ipynb e fluxo ETL. README.md atualizado. RF06 e RF07 completos.
+
+aa4f514 (origin/1-freesql, 1-freesql) Criada consultas SQL e exportado CSV. README.md atualizado. RF03, RF04 e RF05 completos.
+
+1864bce Query SQL de verificação no banco. README.md atualizado. RF01 e RF02 completos.
+
+8c168a8 Melhorado layout do arquivo README.md
+
+b2f7ed8 Estrutura inicial do README.md com tópicos criado.
+
+e3669e8 Início do repositório. Arquivo inicial README.md e .gitignore.
+
+<br>
